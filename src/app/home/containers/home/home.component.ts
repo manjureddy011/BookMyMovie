@@ -2,13 +2,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store, State } from '@ngrx/store';
 import * as MovieState from '../../../reducers/index';
 import * as UserState from '../../../reducers/index';
-
 import { HomeService } from '../../services/home.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
   nowPlayingMoviesList: any = [];
@@ -24,11 +23,13 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+
     this.getNewSetofNowPlayingMovies(1);
-    this.store.select(MovieState.nowPlayingMoviesSelector).subscribe(result => (this.nowPlayingMoviesList = result));
-    this.store.select(MovieState.upcomingMovieSelector).subscribe(result => {
-      this.upcomingMoviesList = result;
-    });
+    this.store.select(MovieState.nowPlayingMoviesSelector).subscribe(result => (this.nowPlayingMoviesList = result));
+    this.store.select(MovieState.upcomingMovieSelector).subscribe(result => {
+      this.upcomingMoviesList = result;
+    }); 
+     
     this.store.select(MovieState.theaterList).subscribe(result => {
       this.theaterList = Object.values(result);
     });
@@ -40,6 +41,7 @@ export class HomeComponent implements OnInit {
 
   getNewSetofNowPlayingMovies(page) {
     this.homeService.getNowshowing(page);
+
   }
   getNewSetofComingMovies(page) {
     this.homeService.getUpcomingMovies(page);

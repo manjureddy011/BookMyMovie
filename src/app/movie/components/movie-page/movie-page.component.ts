@@ -71,8 +71,6 @@ export class MoviePageComponent implements OnInit, OnChanges {
     bookingInstance.time = this.selectedTime;
     bookingInstance.movieList = this.movieDescription;
     dialogRef.afterClosed().subscribe(result => {
-      // console.log(`Dialog closed: ${result}`);
-      // this.dialogResult = result;
     });
   }
   onValChange(val: string) {

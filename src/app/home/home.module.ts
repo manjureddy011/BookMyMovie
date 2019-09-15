@@ -9,12 +9,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SeatReservationModalComponent } from '../shared/components/modals/seat-reservation-modal/seat-reservation-modal.component';
 import { ConfirmationModalComponent } from '../shared/components/modals/confirmation-modal/confirmation-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
 import { PreBookingComponent } from '../shared/components/modals/pre-booking/pre-booking.component';
 import { SharedModule } from '../shared/shared.module';
-
-
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [HomePageComponent, HomeComponent, MovieCardComponent],
@@ -25,7 +22,8 @@ import { SharedModule } from '../shared/shared.module';
     HomeRoutingModule,
     MaterialModule,
     SharedModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ScrollingModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

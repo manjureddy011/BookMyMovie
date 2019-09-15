@@ -68,4 +68,13 @@ export class ProfileComponent implements OnInit {
     this.newPreference.reset();
     this.matDialog.closeAll();
   }
+  TrackByLangFn(index,val){
+  return val;
+  }
+  TrackByGenFun(index,val){
+    return val;
+  }
+  TrackByTheaFn(ind,val){
+   return val;
+  }
 }

@@ -8,13 +8,15 @@ import {
   Output,
   ViewEncapsulation
 } from '@angular/core';
-
-import { HomeService } from '../../services/home.service';
+import {FixedSizeVirtualScrollStrategy, VIRTUAL_SCROLL_STRATEGY} from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  styleUrls: ['./home-page.component.scss'],
+  providers: [
+    {provide: VIRTUAL_SCROLL_STRATEGY,useClass:HomePageComponent}
+  ]
 })
 export class HomePageComponent implements OnInit {
   @Input()
@@ -41,7 +43,7 @@ export class HomePageComponent implements OnInit {
   selectedLanguage = '';
   selectedGenre = '';
   languageList = [{ id: 'en', name: 'English' }, { id: 'ja', name: 'Japanese' }, { id: 'zh', name: 'Chinese' }];
-  constructor(private homeService: HomeService) {}
+  constructor() {}
 
   ngOnInit() {
     this.getNewNowPlayingMovies.emit(1);

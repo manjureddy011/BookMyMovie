@@ -22,7 +22,6 @@ export class MovieCardComponent implements OnInit, OnChanges {
 
   imagesPath = TMDB_URLS.IMAGE_URL;
   castCrewPath = TMDB_URLS.CAST_CREW_SMALL;
-  movieName = 'Robot 2.O';
   dialogResult;
   rating = 4.7;
   totalReviews = 51;
@@ -71,15 +70,13 @@ export class MovieCardComponent implements OnInit, OnChanges {
       data: { category: this.category },
       disableClose: true
     });
-
+    
     const bookingInstance = dialogRef.componentInstance;
     bookingInstance.movieTitle = this.movie.title;
     bookingInstance.screen = this.selectedTheater && this.selectedTheater.name;
     bookingInstance.time = this.selectedTime;
     bookingInstance.movieList = this.movie;
     dialogRef.afterClosed().subscribe(result => {
-      // console.log(`Dialog closed: ${result}`);
-      //  this.dialogResult = result;
     });
   }
 

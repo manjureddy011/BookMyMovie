@@ -56,7 +56,7 @@ export class MovieComponent implements OnInit, AfterContentInit {
         this.movieData.poster_path = value.poster_path;
       });
       this.movieService.getCastAndCrew(this.id).subscribe(res => {
-        console.log(res);
+        // console.log(res);
         this.movieData.casts = res['cast'].splice(0, 5);
         this.movieData.crews = res['crew'].splice(0, 5);
       });
