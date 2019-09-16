@@ -17,6 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AdminModule } from './admin/admin.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from './shared/shared.module';
+import { NGXLogger, LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
 @NgModule({
   declarations: [AppComponent, ProfileComponent],
@@ -29,6 +30,10 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     FlexLayoutModule,
     HttpClientModule,
+    LoggerModule.forRoot({
+      level: !environment.production ? NgxLoggerLevel.LOG : NgxLoggerLevel.OFF,
+      serverLogLevel: NgxLoggerLevel.OFF
+      }),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
@@ -40,7 +45,8 @@ import { SharedModule } from './shared/shared.module';
     MaterialModule,
     CoreModule,
     AdminModule,
-    SharedModule
+    SharedModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

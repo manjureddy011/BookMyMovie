@@ -1,15 +1,12 @@
 import { Component, OnInit, Output, EventEmitter, TemplateRef, ViewChild } from '@angular/core';
 import { HomeService } from '../home/services/home.service';
 import { LoginService } from '../core/services/login.service';
-
 import { Store } from '@ngrx/store';
 import * as UserState from '../reducers/index';
 import { SetUser } from 'src/app/core/store/action/userDetails.action';
 import { User } from 'src/app/core/models/user.model';
 import { MatDialog } from '@angular/material';
-
 import { FormBuilder, Validators } from '@angular/forms';
-// import { UserState } from "src/app/core/store/reducers/userDetails.reducer";
 import * as MovieState from '../reducers/index';
 
 @Component({
@@ -60,8 +57,7 @@ export class ProfileComponent implements OnInit {
     this.genresList = this.homeService.getGenres();
     this.loginService.getUserData().subscribe(data => (this.name = data.users[0].name));
     this.store.select(MovieState.theaterList).subscribe(result => {
-      this.theaterList = Object.values(result);
-      console.log('updated', result, this.theaterList);
+    this.theaterList = Object.values(result);
     });
   }
   sucess() {

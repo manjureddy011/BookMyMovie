@@ -24,16 +24,18 @@
       </select>
     </mat-form-field>
 
+    <mat-form-field>
+      <select  matNativeControl placeholder="Ratings" [(ngModel)]="selectedRatingss"  (ngModelChange)="changeRatings()" >
+        <option *ngFor='let rat of rate' value="{{rat.ratings}}"> Greater Then  {{rat.ratings}}</option>
+      </select>
+    </mat-form-field>
+
 
   </div>
 </mat-dialog-content>
 <!-- </div> -->
 <mat-dialog-actions>
-
-
   <app-s-dialog-cards style="min-height: 100vh; min-width: 95vw" [movieList]="movieObjArray"
     [movieFilter]="movieFilterObj" [languageList]="languageList" [selectedLanguage]="selectedLanguage">
   </app-s-dialog-cards>
-
-
 </mat-dialog-actions>

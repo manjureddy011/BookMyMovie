@@ -26,8 +26,11 @@ export class HomeComponent implements OnInit {
 
     this.getNewSetofNowPlayingMovies(1);
     this.store.select(MovieState.nowPlayingMoviesSelector).subscribe(result => (this.nowPlayingMoviesList = result));
-    this.store.select(MovieState.upcomingMovieSelector).subscribe(result => {
+    console.log(this.nowPlayingMoviesList);    
+this.store.select(MovieState.upcomingMovieSelector).subscribe(result => {
       this.upcomingMoviesList = result;
+console.log(this.upcomingMoviesList);
+
     }); 
      
     this.store.select(MovieState.theaterList).subscribe(result => {

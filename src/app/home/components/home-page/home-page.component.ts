@@ -65,6 +65,7 @@ export class HomePageComponent implements OnInit {
 
   getLanguage(lang) {
     this.selectedLanguage = lang;
+  
   }
 
   getGenre(g) {

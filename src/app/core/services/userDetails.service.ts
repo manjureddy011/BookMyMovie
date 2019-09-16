@@ -56,7 +56,7 @@ export class UserDetailService {
         });
       },
       err => {
-        console.log(err);
+        // console.log(err);
       }
     );
   }

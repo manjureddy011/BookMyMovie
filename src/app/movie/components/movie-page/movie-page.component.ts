@@ -48,7 +48,7 @@ export class MoviePageComponent implements OnInit, OnChanges {
     this.date.valueChanges.subscribe((value: Date) => {
       this.selectedDate = value.toJSON();
     });
-    console.log(this.movieDescription);
+
   }
   checKToDialog() {
     this.category === 'nowPlaying' ? this.openDialog() : this.preBookDialog();

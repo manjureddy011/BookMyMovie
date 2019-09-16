@@ -13,8 +13,10 @@ import { BASE_URL, TMDB_URLS } from 'src/app/shared/config';
 @Injectable({
   providedIn: 'root'
 })
+
 export class SearchApiService {
-  constructor(private http: HttpClient) {}
+  movielist1: any;
+  constructor(private http: HttpClient) { }
 
   getMovies(searchQuery): Observable<any> {
     const urlSuffix = '&include_adult=false'; // parental filter
@@ -33,4 +35,14 @@ export class SearchApiService {
     }
     return movies;
   }
+  SortBasedOnRatings(ratings, moviesList = []) {
+    const result = moviesList.map(item => {
+      const filteredValues = item.value.filter(mv => mv.vote_average > ratings);
+      return {
+      ...item,
+      value: filteredValues
+      };
+      });
+      return result;
+      } 
 }

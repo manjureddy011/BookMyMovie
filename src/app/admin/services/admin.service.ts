@@ -14,20 +14,19 @@ export class AdminService {
   newTheater(data) {
     let newTheaters, newObject;
     this.http.get(THEATERS_URL).subscribe((value) => {
-      console.log(value);
       newObject = value;
       newTheaters = newObject['theaters'];
       newTheaters.push(data);
       this.http.put(THEATERS_URL, newObject).subscribe((res) => {
-        console.log('Sucess', res);
+      
       },
         (e) => console.log(e, 'while updating data'));
     },
       (e) => {
-        console.log(e, 'while fetching data');
+        
       },
       () => {
-        console.log(newObject);
+        
       });
   }
 
@@ -38,7 +37,7 @@ export class AdminService {
     let newObject;
     if (nowPlaying.length > 0) {
       this.http.get(THEATERS_URL).subscribe((value) => {
-        console.log(value);
+       
         newObject = value;
         newObject['theaters'].forEach(theater => {
           if (theater.id === theaterId) {
@@ -47,7 +46,7 @@ export class AdminService {
           }
         });
         this.http.put(THEATERS_URL, newObject).subscribe((xyz) => {
-          console.log('Sucess', xyz);
+         
         });
       });
     }
